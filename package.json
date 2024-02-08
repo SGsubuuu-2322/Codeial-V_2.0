@@ -1,0 +1,11 @@
+{
+  "name": "codeial_v2.0",
+  "version": "1.0.0",
+  "description": "Its a small social media app handson project...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Subham Pradhan",
+  "license": "ISC"
+}
