@@ -1,14 +1,15 @@
 const express = require("express");
-const path = require("path");
-const port = 8000;
-
 const app = express();
+const port = 8000;
+const expressLayouts = require("express-ejs-layouts");
+// const path = require("path");
+
+app.use(expressLayouts);
+app.use("/", require("./routes"));
 
 app.set("view engine", "ejs");
 // app.set("views", path.join(__dirname, "views"));
 app.set("views", "./views");
-
-app.use("/", require("./routes"));
 
 app.listen(port, (err) => {
   if (err) {
