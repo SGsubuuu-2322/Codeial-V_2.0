@@ -14,3 +14,10 @@ module.exports.userSignUp = function (req, res) {
     title: "Codeial | Sign-up",
   });
 };
+
+module.exports.create = function (req, res) {
+  // ToDo
+};
+module.exports.createSession = function (req, res) {
+  // ToDo
+};
