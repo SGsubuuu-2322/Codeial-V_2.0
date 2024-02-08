@@ -9,5 +9,5 @@ db.on(
 );
 
 db.once("open", function () {
-  console.log("Successfully connected to the MongoDB...");
+  console.log("\n Successfully connected to the MongoDB...");
 });
