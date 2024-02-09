@@ -4,9 +4,12 @@ const LocalStrategy = require("passport-local");
 const User = require("../models/Users");
 
 passport.use(
-  new LocalStrategy({
-    usernameField: "email",
-    function(email, password, done) {
+  new LocalStrategy(
+    {
+      usernameField: "email",
+    },
+    function (email, password, done) {
+      console.log("local strategy callback called");
       User.findOne({ email: email })
         .then((user) => {
           if (!user || user.password !== password) {
@@ -20,8 +23,8 @@ passport.use(
           console.log("Error in passport for finding the user...", err);
           return done(err);
         });
-    },
-  })
+    }
+  )
 );
 
 passport.serializeUser((user, done) => {
