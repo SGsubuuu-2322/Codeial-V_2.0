@@ -8,11 +8,17 @@ module.exports.profile = function (req, res) {
 };
 
 module.exports.userSignIn = function (req, res) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/users/profile");
+  }
   return res.render("user_signin", {
     title: "Codeial | Sign-in",
   });
 };
 module.exports.userSignUp = function (req, res) {
+  if (req.isAuthenticated()) {
+    return res.redirect("/users/profile");
+  }
   return res.render("user_signup", {
     title: "Codeial | Sign-up",
   });
