@@ -1,6 +1,7 @@
 const User = require("../models/Users");
 
 module.exports.profile = function (req, res) {
+  console.log("User profile request received!");
   return res.render("user_profile", {
     title: "Profile",
   });
@@ -47,6 +48,7 @@ module.exports.create = function (req, res) {
     });
 };
 module.exports.createSession = function (req, res) {
+  console.log("From create-session handler or action: ", req.user);
   // ToDo
   return res.redirect("/users/profile");
 };

@@ -28,10 +28,12 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
+  console.log("SerializeUser function called...");
   done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
+  console.log("DeserializeUser function called...");
   User.findById(id)
     .then((user) => {
       return done(null, user);
@@ -45,9 +47,8 @@ passport.deserializeUser((id, done) => {
     });
 });
 
-module.exports = passport;
-
 passport.checkAuthentication = function (req, res, next) {
+  console.log("In checkAuthentication function of passport.js file...");
   if (req.isAuthenticated()) {
     return next();
   }
@@ -56,6 +57,9 @@ passport.checkAuthentication = function (req, res, next) {
 };
 
 passport.setAuthenticatedUser = function (req, res, next) {
+  console.log(
+    "In setAuthenticatedUser middleware of passport-local strategy..."
+  );
   if (req.isAuthenticated()) {
     console.log(req.user);
     res.locals.user = req.user;
@@ -63,3 +67,5 @@ passport.setAuthenticatedUser = function (req, res, next) {
 
   next();
 };
+
+module.exports = passport;
