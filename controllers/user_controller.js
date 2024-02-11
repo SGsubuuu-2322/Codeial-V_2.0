@@ -56,5 +56,16 @@ module.exports.create = function (req, res) {
 module.exports.createSession = function (req, res) {
   console.log("From create-session handler or action: ", req.user);
   // ToDo
-  return res.redirect("/users/profile");
+  return res.redirect("/");
+};
+
+module.exports.destroySession = function (req, res) {
+  req.logout((err) => {
+    if (err) {
+      console.log("There's some error in logging out the user", err);
+      return;
+    } else {
+      return res.redirect("/");
+    }
+  });
 };
