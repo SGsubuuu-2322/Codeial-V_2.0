@@ -21,3 +21,5 @@ header {
       header ul li a {
         color: #fff;
         text-decoration: none; }
+    header ul li:hover {
+      border-bottom: 2px solid #fff; }

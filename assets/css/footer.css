@@ -1,0 +1,13 @@
+footer {
+  padding-left: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  display: flex;
+  align-items: center; }
+  footer ul {
+    list-style-type: none; }
+    footer ul li a {
+      text-decoration: none;
+      color: #fff; }
+    footer ul li:hover {
+      border-bottom: 2px solid #fff; }
