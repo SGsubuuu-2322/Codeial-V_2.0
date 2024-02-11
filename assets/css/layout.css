@@ -1,8 +1,8 @@
 * {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  text-align: center;
-}
+  box-sizing: border-box; }
+  * body {
+    margin: 0; }
+    * body .layout-main {
+      margin: 0;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5); }

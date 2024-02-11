@@ -1,0 +1,21 @@
+header {
+  background-color: deepskyblue;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4); }
+  header h1 {
+    color: #fff;
+    margin: 0; }
+  header ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style-type: none; }
+    header ul li {
+      margin: 0 6px;
+      font-size: 19px; }
+      header ul li a {
+        color: #fff;
+        text-decoration: none; }
