@@ -4,5 +4,7 @@
     margin: 0; }
     * body .layout-main {
       margin: 0;
+      padding: 20px;
       height: 100vh;
-      background-color: rgba(0, 0, 0, 0.5); }
+      background-color: #fff;
+      text-align: center; }

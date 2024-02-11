@@ -6,8 +6,10 @@ header {
   align-items: center;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4); }
   header h1 {
-    color: #fff;
     margin: 0; }
+    header h1 a {
+      color: #fff;
+      text-decoration: none; }
   header ul {
     margin: 0;
     padding: 0;

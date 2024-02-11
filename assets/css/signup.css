@@ -1,0 +1,28 @@
+h1 {
+  margin: 0; }
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: 40px auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5); }
+  .form input {
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid black;
+    margin: 5px 0; }
+  .form button {
+    font-size: 16px;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer; }
+  .form button:focus, .form input:focus {
+    outline: none; }
+  .form button:active {
+    transform: scale(0.99); }

@@ -1,19 +1,34 @@
+<link rel="stylesheet" href="/css/signup.css" />
 <h1>Sign-up Page</h1>
 
-<form action="/users/create" method="post">
-  <input type="text" name="name" placeholder="Enter your name..." required />
-  <input type="email" name="email" placeholder="Enter your email..." required />
+<form action="/users/create" method="post" class="form">
+  <input
+    type="text"
+    name="name"
+    placeholder="Enter your name..."
+    required
+    autofocus
+  />
+  <input
+    type="email"
+    name="email"
+    placeholder="Enter your email..."
+    required
+    autofocus
+  />
   <input
     type="password"
     name="password"
     placeholder="Enter your password..."
     required
+    autofocus
   />
   <input
     type="password"
     name="confirm_password"
     placeholder="Confirm your password..."
     required
+    autofocus
   />
   <button type="submit">Sign Up</button>
 </form>
