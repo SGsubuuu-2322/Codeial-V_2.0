@@ -1,7 +1,9 @@
-* {
-  box-sizing: border-box;
+h1{
+  margin: 0;
 }
-h1 {
-  background-color: aqua;
-  color: blue;
+
+.profile-container{
+  height: 100%;
+  width: 100%;
+  box-shadow: 0 5px 6px rgba(0, 0, 0, 0.6);
 }
