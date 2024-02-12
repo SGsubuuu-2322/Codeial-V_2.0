@@ -1,4 +1,4 @@
-const User = require("../models/Users");
+const User = require("../models/user");
 
 module.exports.profile = function (req, res) {
   console.log("User profile request received!");
