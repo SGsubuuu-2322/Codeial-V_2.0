@@ -9,6 +9,7 @@
       cols="30"
       rows="3"
       placeholder="Write your post..."
+      required
     ></textarea>
     <button type="submit">Add Post</button>
   </form>
@@ -30,6 +31,7 @@
             type="text"
             name="content"
             placeholder="Type here to add comment..."
+            required
           />
           <input type="hidden" name="post" value="<%= post._id %>" />
           <button type="submit">Add Comment</button>
