@@ -11,8 +11,8 @@ module.exports.create = function (req, res) {
           user: req.user.id,
         })
           .then((comment) => {
-            Post.comments.push(comment);
-            Post.save();
+            post.comments.push(comment);
+            post.save();
             return res.redirect("back");
           })
           .catch((err) => {
