@@ -11,4 +11,12 @@
     ></textarea>
     <button type="submit">Add Post</button>
   </form>
+
+  <div class="post-lists-container">
+    <ul class="post-lists">
+      <% for(post of posts){ %>
+      <li><%= post.content %></li>
+      <%}%>
+    </ul>
+  </div>
 </section>
