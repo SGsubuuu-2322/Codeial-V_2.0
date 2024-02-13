@@ -32,3 +32,46 @@ module.exports.create = function (req, res) {
       return;
     });
 };
+
+module.exports.destroy = function (req, res) {
+  Comment.findById(req.params.id)
+    .then((comment) => {
+      if (!comment) {
+        return res.redirect("back");
+      } else if (comment) {
+        if (req.user.id == comment.user) {
+          const postID = comment.post;
+
+          Comment.deleteOne({ _id: req.params.id })
+            .then(() => {
+              console.log("Comment deleted successfully...");
+            })
+            .catch((err) => {
+              console.log("Error in deleting the comment from DB...", err);
+              return;
+            });
+
+          Post.findByIdAndUpdate(postID, {
+            $pull: { comments: req.params.id },
+          })
+            .then((post) => {
+              console.log(
+                "Updated the post after removing the comment from comments array..."
+              );
+              return res.redirect("back");
+            })
+            .catch((err) => {
+              console.log(
+                "Error in finding post and updating its comments array...",
+                err
+              );
+              return;
+            });
+        }
+      }
+    })
+    .catch((err) => {
+      console.log("Error in finding the comment from DB...".err);
+      return;
+    });
+};

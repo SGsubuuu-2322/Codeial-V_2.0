@@ -45,6 +45,9 @@
           <ul id="post-comment-<%= post._id %>">
             <% for(comment of post.comments){ %>
             <li>
+              <% if(locals.user && (locals.user.id == comment.user.id)){ %>
+              <small><a href="/comments/destroy/<%= comment.id %>">X</a></small>
+              <% } %>
               <p class="comment"><%= comment.content %></p>
               <small><%= comment.user.name %></small>
             </li>
