@@ -15,6 +15,22 @@ module.exports.profile = function (req, res) {
     });
 };
 
+module.exports.updateProfile = function (req, res) {
+  if (req.user.id == req.params.id) {
+    User.findByIdAndUpdate(req.params.id, req.body)
+      .then((user) => {
+        return res.redirect("back");
+      })
+      .catch((err) => {
+        console.log(
+          "There's some error in updating the user details in DB...",
+          err
+        );
+        return;
+      });
+  }
+};
+
 module.exports.userSignIn = function (req, res) {
   if (req.isAuthenticated()) {
     return res.redirect("/users/profile");

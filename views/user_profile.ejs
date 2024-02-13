@@ -7,7 +7,7 @@
   <p>Your email is : <%= user_profile.email %></p>
 
   <h2>Profile_Updation_Form</h2>
-  <form action="/users/update" method="post">
+  <form action="/users/update/<%= user.id %>" method="post">
     <input
       type="text"
       name="name"

@@ -9,6 +9,11 @@ router.get(
   passport.checkAuthentication,
   userController.profile
 );
+router.post(
+  "/update/:id",
+  passport.checkAuthentication,
+  userController.updateProfile
+);
 router.get("/sign-in", userController.userSignIn);
 router.get("/sign-up", userController.userSignUp);
 router.post("/create", userController.create);
