@@ -11,7 +11,7 @@ const passport = require("passport");
 const passportLocal = require("./configs/passport_local_strategy");
 const MongoStore = require("connect-mongo");
 const sassMiddleware = require("node-sass-middleware");
-const flash = require("connect");
+const flash = require("connect-flash");
 const customMware = require("./configs/middleware");
 
 app.use(
