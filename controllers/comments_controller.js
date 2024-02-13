@@ -32,9 +32,9 @@ module.exports.destroy = async (req, res) => {
       if (req.user.id == comment.user) {
         const postID = comment.post;
 
-        let cmt = await Comment.deleteOne({ _id: req.params.id });
+        await Comment.deleteOne({ _id: req.params.id });
 
-        let post = await Post.findByIdAndUpdate(postID, {
+        await Post.findByIdAndUpdate(postID, {
           $pull: { comments: req.params.id },
         });
         return res.redirect("back");
