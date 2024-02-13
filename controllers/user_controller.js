@@ -28,6 +28,8 @@ module.exports.updateProfile = function (req, res) {
         );
         return;
       });
+  } else {
+    return res.status(401).send("Unauthorized...");
   }
 };
 
