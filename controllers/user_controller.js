@@ -2,9 +2,17 @@ const User = require("../models/user");
 
 module.exports.profile = function (req, res) {
   console.log("User profile request received!");
-  return res.render("user_profile", {
-    title: "Profile",
-  });
+  User.findById(req.params.id)
+    .then((user) => {
+      return res.render("user_profile", {
+        title: "Profile",
+        profile_user: user,
+      });
+    })
+    .catch((err) => {
+      console.log("There's some issue in finding the user from DB...", err);
+      return;
+    });
 };
 
 module.exports.userSignIn = function (req, res) {
