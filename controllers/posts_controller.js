@@ -19,28 +19,44 @@ module.exports.create = function (req, res) {
 module.exports.destroy = function (req, res) {
   Post.findById(req.params.id)
     .then((post) => {
-      if (post) {
+      if (!post) {
+        return res.redirect("/");
+      } else if (post) {
         if (post.user == req.user.id) {
-          post.delete();
+          Post.deleteOne({ _id: req.params.id })
+            .then(() => {
+              console.log("Post deleted successfully...");
+            })
+            .catch((err) => {
+              console.log(
+                "There's some error in deleting the post from DB...",
+                err
+              );
+              return;
+            });
 
-          Comment.deleteMany({ post: req.params.id }).catch((err) => {
-            console.log(
-              "Error in deleting all the comments of the post from DB",
-              err
-            );
-            return;
-          });
+          Comment.deleteMany({ post: req.params.id })
+            .then(() => {
+              console.log(
+                "Comments related to the post also deleted successfully..."
+              );
+            })
+            .catch((err) => {
+              console.log(
+                "There's some issue in deleting the comments related to the post from DB...",
+                err
+              );
+              return;
+            });
 
-          return res.redirect("back");
-        } else {
-          return res.redirect("back");
+          return res.redirect("/");
         }
       } else {
-        return res.redirect("back");
+        return res.redirect("/");
       }
     })
     .catch((err) => {
-      console.log("Error in finding the post by id from DB...", err);
+      console.log("There's some issue in finding the post from DB", err);
       return;
     });
 };
