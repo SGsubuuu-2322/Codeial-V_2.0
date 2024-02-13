@@ -25,7 +25,7 @@ module.exports.home = function (req, res) {
       },
     })
     .then((posts) => {
-      res.render("home", {
+      return res.render("home", {
         title: "Home",
         posts: posts,
       });
