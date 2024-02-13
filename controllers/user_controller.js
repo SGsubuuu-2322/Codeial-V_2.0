@@ -71,8 +71,8 @@ module.exports.create = async (req, res) => {
 };
 
 module.exports.createSession = function (req, res) {
-  console.log("From create-session handler or action: ", req.user);
-  // ToDo
+  // console.log("From create-session handler or action: ", req.user);
+  req.flash("success", "Logged In Successfully...");
   return res.redirect("/");
 };
 
@@ -82,6 +82,7 @@ module.exports.destroySession = function (req, res) {
       console.log("There's some error in logging out the user", err);
       return;
     } else {
+      req.flash("success", "You'hv been logged out...");
       return res.redirect("/");
     }
   });
