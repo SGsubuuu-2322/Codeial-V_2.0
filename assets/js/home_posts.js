@@ -9,10 +9,12 @@
         url: "/posts/create",
         data: newPostForm.serialize(),
         success: function (data) {
-          console.log(data);
+          // console.log(data);
           let newPost = showPostOnDom(data.data.post);
           $(".post-lists").prepend(newPost);
           deletePost($(" .delete-post-button", newPost));
+
+          showFlashNotification(data.message, "success");
         },
         error: function (err) {
           console.log(err.responseText);
@@ -56,8 +58,6 @@
     `);
   };
 
-  createPostForm();
-
   let deletePost = function (deleteLink) {
     deleteLink.click((e) => {
       e.preventDefault();
@@ -66,8 +66,9 @@
         type: "get",
         url: $(deleteLink).prop("href"),
         success: function (data) {
-          console.log(data);
+          // console.log(data);
           $(`#post-${data.data.post_id}`).remove();
+          showFlashNotification(data.message, "error");
         },
         error: function (err) {
           console.log(err.responseText);
@@ -75,4 +76,16 @@
       });
     });
   };
+
+  let showFlashNotification = function (message, type) {
+    new Noty({
+      theme: "relax",
+      text: message,
+      type: type,
+      layout: "topRight",
+      timeout: 1500,
+    }).show();
+  };
+
+  createPostForm();
 }

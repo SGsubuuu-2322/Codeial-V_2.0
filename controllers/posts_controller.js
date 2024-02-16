@@ -13,7 +13,7 @@ module.exports.create = async (req, res) => {
         data: {
           post: post,
         },
-        message: "Post Created!!!",
+        message: "Post Created Successfully!!!",
       });
     }
 
@@ -42,7 +42,7 @@ module.exports.destroy = async (req, res) => {
             data: {
               post_id: req.params.id,
             },
-            message: "Post deleted!!!",
+            message: "Post and its associated comments deleted successfully...",
           });
         }
 
