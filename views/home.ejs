@@ -17,7 +17,7 @@
     <% } %>
 
     <div class="post-lists-container">
-      <ul class="post-lists">
+      <ul id="posts-list">
         <% for(post of posts){ %> <%- include('_post') -%> <%}%>
       </ul>
     </div>
@@ -36,4 +36,5 @@
     </ul>
   </section>
 </div>
+<script src="/js/home_posts_comments.js"></script>
 <script src="/js/home_posts.js"></script>

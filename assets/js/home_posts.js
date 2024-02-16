@@ -9,11 +9,14 @@
         url: "/posts/create",
         data: newPostForm.serialize(),
         success: function (data) {
-          // console.log(data);
+          console.log(data);
           let newPost = showPostOnDom(data.data.post);
-          $(".post-lists").prepend(newPost);
+          $("#posts-list").prepend(newPost);
           $("#text-area").val("");
           deletePost($(" .delete-post-button", newPost));
+
+          new postComments(data.data.post._id);
+
           showFlashNotification(data.message, "success");
         },
         error: function (err) {
@@ -35,7 +38,7 @@
   
     <div class="post-comments">
 
-      <form action="/comments/create" method="post" class="new-comment-form">
+      <form action="/comments/create" method="post" id="post-${post._id}-comments-form">
         <input
           type="text"
           name="content"
@@ -59,7 +62,7 @@
   };
 
   let deletePost = function (deleteLink) {
-    deleteLink.click((e) => {
+    $(deleteLink).click((e) => {
       e.preventDefault();
 
       $.ajax({
@@ -87,5 +90,17 @@
     }).show();
   };
 
+  let convertPostsToAjax = function () {
+    $("#posts-list>li").each(function () {
+      let self = $(this);
+      let deleteButton = $(" .delete-post-button", self);
+      deletePost(deleteButton);
+
+      let postId = self.prop("id").split("-")[1];
+      new postComments(postId);
+    });
+  };
+
   createPostForm();
+  convertPostsToAjax();
 }
