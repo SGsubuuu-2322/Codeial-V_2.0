@@ -12,8 +12,8 @@
           // console.log(data);
           let newPost = showPostOnDom(data.data.post);
           $(".post-lists").prepend(newPost);
+          $("#text-area").val("");
           deletePost($(" .delete-post-button", newPost));
-
           showFlashNotification(data.message, "success");
         },
         error: function (err) {
