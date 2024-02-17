@@ -8,7 +8,12 @@
   <% if(user.id == user_profile.id){ %>
 
   <h2>Profile_Updation_Form</h2>
-  <form id="update-form" action="/users/update/<%= user.id %>" method="post">
+  <form
+    id="update-form"
+    action="/users/update/<%= user.id %>"
+    method="post"
+    enctype="multipart/form-data"
+  >
     <input
       type="text"
       name="name"
@@ -23,6 +28,9 @@
       value="<%= user_profile.email %>"
       required
     />
+
+    <input type="file" name="avatar" placeholder="Upload your avatar..." />
+
     <button type="submit">Update Profile</button>
   </form>
   <%}%>
