@@ -12,6 +12,8 @@
         success: function (data) {
           $("#user-name").text(`Heyy!!! ${data.data.user.name}`);
           $("#user-email").text(`Your email is :  ${data.data.user.email}`);
+          $("#user-name-header").text(`${data.data.user.name}`);
+          $("#user-name-footer").text(`${data.data.user.name}`);
         },
         error: function (err) {
           console.log("Error: ", err.responseText);
