@@ -2,12 +2,13 @@
 <div class="profile-container">
   <h1>Codeial | <%= title %> Page</h1>
 
+  <h2 id="user-name">Heyy!!! <%= user_profile.name %></h2>
+  <p id="user-email">Your email is : <%= user_profile.email %></p>
+
   <% if(user.id == user_profile.id){ %>
-  <h2>Heyy!!! <%= user_profile.name %></h2>
-  <p>Your email is : <%= user_profile.email %></p>
 
   <h2>Profile_Updation_Form</h2>
-  <form action="/users/update/<%= user.id %>" method="post">
+  <form id="update-form" action="/users/update/<%= user.id %>" method="post">
     <input
       type="text"
       name="name"
@@ -24,8 +25,7 @@
     />
     <button type="submit">Update Profile</button>
   </form>
-  <%}else{%>
-  <h2>Heyy!!! <%= user_profile.name %></h2>
-  <p>Your email is : <%= user_profile.email %></p>
   <%}%>
 </div>
+
+<script src="/js/user_profile.js"></script>

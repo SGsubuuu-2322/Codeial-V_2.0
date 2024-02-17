@@ -3,6 +3,17 @@ const User = require("../models/user");
 module.exports.profile = async (req, res) => {
   try {
     let user = await User.findById(req.params.id);
+    if (req.xhr) {
+      return res.status(200).json({
+        data: {
+          user: {
+            name: user.name,
+            email: user.email,
+          },
+        },
+        message: "User details updated!!!",
+      });
+    }
     return res.render("user_profile", {
       title: "Profile",
       user_profile: user,
