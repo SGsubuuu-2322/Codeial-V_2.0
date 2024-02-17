@@ -32,10 +32,8 @@
   <body>
     <%- include('__header') %>
     <main class="layout-main"><%- body %></main>
-    <%- include('__footer') %> <%- script %>
-
-    <script src="/js/user_profile.js"></script>
-    <%if(flash.success && flash.success.length > 0 ) {%>
+    <%- include('__footer') %> <%- script %> <%if(flash.success &&
+    flash.success.length > 0 ) {%>
     <script>
       new Noty({
         theme: "relax",
