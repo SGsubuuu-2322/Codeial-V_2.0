@@ -9,13 +9,13 @@
         url: "/posts/create",
         data: newPostForm.serialize(),
         success: function (data) {
-          console.log(data);
+          // console.log(data);
           let newPost = showPostOnDom(data.data.post);
           $("#posts-list").prepend(newPost);
           $("#text-area").val("");
           deletePost($(" .delete-post-button", newPost));
 
-          new postComments(data.data.post._id);
+          new PostComments(data.data.post._id);
 
           showFlashNotification(data.message, "success");
         },
@@ -40,6 +40,7 @@
 
       <form action="/comments/create" method="post" id="post-${post._id}-comments-form">
         <input
+          id="comment-text-area"
           type="text"
           name="content"
           placeholder="Type here to add comment..."
@@ -51,7 +52,7 @@
 
   
       <div class="post-comments-list">
-        <ul id="post-comment-${post._id}">
+        <ul id="post-comments-${post._id}">
          
         </ul>
       </div>
@@ -97,7 +98,7 @@
       deletePost(deleteButton);
 
       let postId = self.prop("id").split("-")[1];
-      new postComments(postId);
+      new PostComments(postId);
     });
   };
 

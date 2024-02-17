@@ -13,8 +13,13 @@
 
   <div class="post-comments">
     <%if(locals.user){%>
-    <form action="/comments/create" method="post" id="new-comment-form">
+    <form
+      id="post-<%= post._id %>-comments-form"
+      action="/comments/create"
+      method="post"
+    >
       <input
+        id="comment-text-area"
         type="text"
         name="content"
         placeholder="Type here to add comment..."
@@ -26,7 +31,7 @@
     <%}%>
 
     <div class="post-comments-list">
-      <ul id="post-comment-<%= post._id %>">
+      <ul id="post-comments-<%= post._id %>">
         <% for(comment of post.comments){ %> <%- include("_comment") -%> <%}%>
       </ul>
     </div>

@@ -23,11 +23,13 @@ module.exports.home = async (req, res) => {
       .populate("user")
       .populate({
         path: "comments",
+        options: {
+          sort: {
+            createdAt: -1,
+          },
+        },
         populate: {
           path: "user",
-        },
-        sort: {
-          createdAt: "1",
         },
       });
 

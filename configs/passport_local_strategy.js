@@ -10,7 +10,7 @@ passport.use(
       passReqToCallback: true,
     },
     function (req, email, password, done) {
-      console.log("local strategy callback called");
+      // console.log("local strategy callback called");
       User.findOne({ email: email })
         .then((user) => {
           if (!user || user.password !== password) {
@@ -29,12 +29,12 @@ passport.use(
 );
 
 passport.serializeUser((user, done) => {
-  console.log("SerializeUser function called...");
+  // console.log("SerializeUser function called...");
   done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-  console.log("DeserializeUser function called...");
+  // console.log("DeserializeUser function called...");
   User.findById(id)
     .then((user) => {
       return done(null, user);
@@ -49,7 +49,7 @@ passport.deserializeUser((id, done) => {
 });
 
 passport.checkAuthentication = function (req, res, next) {
-  console.log("In checkAuthentication function of passport.js file...");
+  // console.log("In checkAuthentication function of passport.js file...");
   if (req.isAuthenticated()) {
     return next();
   }
@@ -58,9 +58,9 @@ passport.checkAuthentication = function (req, res, next) {
 };
 
 passport.setAuthenticatedUser = function (req, res, next) {
-  console.log(
-    "In setAuthenticatedUser middleware of passport-local strategy..."
-  );
+  // console.log(
+  //   "In setAuthenticatedUser middleware of passport-local strategy..."
+  // );
   if (req.isAuthenticated()) {
     console.log(req.user);
     res.locals.user = req.user;
