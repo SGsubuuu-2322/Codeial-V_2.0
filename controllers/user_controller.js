@@ -28,8 +28,7 @@ module.exports.updateProfile = async (req, res) => {
 
         user.name = req.body.name;
         user.email = req.body.email;
-
-        console.log(req.file);
+        
         if (req.file) {
           if (user.avatar) {
             const filePath = path.join(__dirname, "..", user.avatar);
