@@ -19,7 +19,7 @@ module.exports.updateProfile = async (req, res) => {
   try {
     if (req.user.id == req.params.id) {
       let user = await User.findById(req.params.id);
-      console.log("req.body: ", req.user.id, req.params.id);
+
       User.uploadedAvatar(req, res, function (err) {
         if (err) {
           console.log("********Error in multer: ", err);
@@ -32,23 +32,15 @@ module.exports.updateProfile = async (req, res) => {
         console.log(req.file);
         if (req.file) {
           if (user.avatar) {
-            fs.unlinkSync(path.join(__dirname, "..", user.avatar));
+            const filePath = path.join(__dirname, "..", user.avatar);
+            if (fs.existsSync(filePath)) {
+              console.log("The file exists.");
+              fs.unlinkSync(filePath);
+            }
           }
           user.avatar = User.avatarPath + "/" + req.file.filename;
         }
         user.save();
-
-        // if (req.xhr) {
-        //   return res.status(200).json({
-        //     data: {
-        //       user: {
-        //         name: user.name,
-        //         email: user.email,
-        //       },
-        //     },
-        //     message: "Successfully updated!!!",
-        //   });
-        // }
 
         return res.redirect("back");
       });
