@@ -3,17 +3,6 @@ const User = require("../models/user");
 module.exports.profile = async (req, res) => {
   try {
     let user = await User.findById(req.params.id);
-    if (req.xhr) {
-      return res.status(200).json({
-        data: {
-          user: {
-            name: user.name,
-            email: user.email,
-          },
-        },
-        message: "User details updated!!!",
-      });
-    }
     return res.render("user_profile", {
       title: "Profile",
       user_profile: user,
@@ -27,8 +16,37 @@ module.exports.profile = async (req, res) => {
 module.exports.updateProfile = async (req, res) => {
   try {
     if (req.user.id == req.params.id) {
-      await User.findByIdAndUpdate(req.params.id, req.body);
-      return res.redirect("back");
+      let user = await User.findById(req.params.id);
+      User.uploadedAvatar(req, res, function (err) {
+        if (err) {
+          console.log("********Error in multer: ", err);
+          return res.status(500).json({ error: "Error in multer" });
+        }
+
+        user.name = req.body.name;
+        user.email = req.body.email;
+
+        console.log(req.file);
+        if (req.file) {
+          console.log("Avatar Path: ", User.avatarPath);
+          user.avatar = User.avatarPath + "/" + req.file.filename;
+        }
+        user.save();
+
+        // if (req.xhr) {
+        //   return res.status(200).json({
+        //     data: {
+        //       user: {
+        //         name: user.name,
+        //         email: user.email,
+        //       },
+        //     },
+        //     message: "Successfully updated!!!",
+        //   });
+        // }
+
+        return res.redirect("back");
+      });
     } else {
       return res.status(401).send("Unauthorized...");
     }
