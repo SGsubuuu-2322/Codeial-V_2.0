@@ -1,4 +1,6 @@
 const User = require("../models/user");
+const fs = require("fs");
+const path = require("path");
 
 module.exports.profile = async (req, res) => {
   try {
@@ -17,6 +19,7 @@ module.exports.updateProfile = async (req, res) => {
   try {
     if (req.user.id == req.params.id) {
       let user = await User.findById(req.params.id);
+      console.log("req.body: ", req.user.id, req.params.id);
       User.uploadedAvatar(req, res, function (err) {
         if (err) {
           console.log("********Error in multer: ", err);
@@ -28,7 +31,9 @@ module.exports.updateProfile = async (req, res) => {
 
         console.log(req.file);
         if (req.file) {
-          console.log("Avatar Path: ", User.avatarPath);
+          if (user.avatar) {
+            fs.unlinkSync(path.join(__dirname, "..", user.avatar));
+          }
           user.avatar = User.avatarPath + "/" + req.file.filename;
         }
         user.save();
