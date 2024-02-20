@@ -14,7 +14,8 @@ passport.use(
     },
     async function (accessToken, refreshToken, profile, done) {
       try {
-        let oldUser = await User.findOne({ email: emails[0].value });
+        let oldUser = await User.findOne({ email: profile.emails[0].value });
+        console.log("Tokens are: ", accessToken, refreshToken);
         console.log(profile);
         if (oldUser) {
           return done(null, oldUser);
