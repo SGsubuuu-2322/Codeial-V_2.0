@@ -5,24 +5,24 @@ const ExtractJwt = require("passport-jwt").ExtractJwt;
 const User = require("../models/user");
 
 let opts = {
-  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken,
+  jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
   secretOrKey: "Codeial",
 };
 
 passport.use(
-  new JWTStrategy(opts, function (jwtPayLoad, done) {
-    User.findById(jwtPayLoad._id, function (err, user) {
-      if (err) {
-        console.log("Error in jwt authentication: ", err);
-        return;
-      }
+  new JWTStrategy(opts, async function (jwtPayLoad, done) {
+    try {
+      let user = await User.findById(jwtPayLoad._id);
 
       if (user) {
         return done(null, user);
       } else {
         return done(null, false);
       }
-    });
+    } catch (err) {
+      console.log("Error in jwt authentication: ", err);
+      return;
+    }
   })
 );
 

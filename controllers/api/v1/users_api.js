@@ -5,23 +5,23 @@ module.exports.createSession = async function (req, res) {
   try {
     let user = await User.findOne({ email: req.body.email });
     if (!user || user.password !== req.body.password) {
-      return res.json(422, {
+      return res.status(422).json({
         message: "Invalid Username or Password!!!",
       });
     }
 
-    return res.json(200, {
+    return res.status(200).json({
       message:
         "Signed In successfully, here is your token.Please keep it safe...",
       data: {
         token: jsonWebToken.sign(user.toJSON(), "Codeial", {
-          expiresIn: "10000",
+          expiresIn: "100000",
         }),
       },
     });
   } catch (err) {
     console.log("********Error****: ", err);
-    return res.json(500, {
+    return res.status(500).json({
       message: "Internal server damage...",
     });
   }
