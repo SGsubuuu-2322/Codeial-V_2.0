@@ -62,7 +62,7 @@ passport.setAuthenticatedUser = function (req, res, next) {
   //   "In setAuthenticatedUser middleware of passport-local strategy..."
   // );
   if (req.isAuthenticated()) {
-    console.log(req.user);
+    // console.log(req.user);
     res.locals.user = req.user;
   }
 
