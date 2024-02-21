@@ -11,12 +11,6 @@ let transporter = nodemailer.createTransport({
     user: "pradhansubham2322@gmail.com",
     pass: "uqjc fgch erap enra",
   },
-  // host: "smtp.ethereal.email",
-  // port: 587,
-  // auth: {
-  //   user: "kacie.okon@ethereal.email",
-  //   pass: "SqR13KEyycK5WK3zM4",
-  // },
 });
 
 let renderTemlate = (data, relativePath) => {
