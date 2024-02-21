@@ -8,9 +8,15 @@ let transporter = nodemailer.createTransport({
   port: 587,
   secure: false,
   auth: {
-    user: "pradhansubham2322",
-    password: "SGshreyans(@232214)",
+    user: "pradhansubham2322@gmail.com",
+    pass: "uqjc fgch erap enra",
   },
+  // host: "smtp.ethereal.email",
+  // port: 587,
+  // auth: {
+  //   user: "kacie.okon@ethereal.email",
+  //   pass: "SqR13KEyycK5WK3zM4",
+  // },
 });
 
 let renderTemlate = (data, relativePath) => {
