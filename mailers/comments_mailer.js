@@ -5,7 +5,7 @@ exports.newComments = (comment) => {
     { comment: comment },
     "/comments/new_comment.ejs"
   );
-  console.log("Inside comments mailer....", comment);
+  // console.log("Inside comments mailer....", comment);
   nodeMailer.transporter.sendMail(
     {
       from: {
@@ -23,7 +23,7 @@ exports.newComments = (comment) => {
         return;
       }
 
-      console.log("Message sent...", info);
+      // console.log("Message sent...", info);
       return;
     }
   );

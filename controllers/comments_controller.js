@@ -25,7 +25,7 @@ module.exports.create = async (req, res) => {
           return;
         }
 
-        console.log("Job enqueued: ", job.id);
+        // console.log("Job enqueued: ", job.id);
         return;
       });
 
