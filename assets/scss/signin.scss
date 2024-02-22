@@ -1,40 +1,77 @@
-h1{
-    margin: 0;
-}
+.sign-in-container{
 
-.form{
     display: flex;
     flex-direction: column;
-    width: 400px;
-    margin: 40px auto;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
-    // height: 20vh;
-    input{
-        padding: 8px;
-        font-size: 16px;
-        border: none;
-        border-bottom: 2px solid black;
-        margin: 5px 0;
+    justify-content: center;
+    align-items: center;
+
+    h1{
+        margin: 0;
+    }
+    
+    .form{
+        display: flex;
+        flex-direction: column;
+        width: 400px;
+        margin: 40px auto;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+        // height: 20vh;
+        input{
+            padding: 8px;
+            font-size: 16px;
+            border: none;
+            border-bottom: 2px solid black;
+            margin: 5px 0;
+        }
+    
+        button{
+            font-size: 16px;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+    
+        button:focus, input:focus{
+            outline: none;
+        }
+    
+        button:active{
+            transform: scale(0.99);
+        }
+    
+    
     }
 
-    button{
-        font-size: 16px;
+    .other-options{
+        background-color: #ddd;
+        padding: 0 10px;
+        border-radius: 5px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s ease-in;
+
+        p{
+            a{
+                text-decoration: none;
+                color: #333;
+            }
+        }
+    }
+
+    .other-options:hover{
         background-color: #333;
-        color: #fff;
-        padding: 10px;
-        border: none;
-        cursor: pointer;
+        p{
+            a{
+                color: #fff;
+            }
+        }
+
     }
 
-    button:focus, input:focus{
-        outline: none;
+    a:hover{
+        border-bottom: 2px solid #fff;
     }
-
-    button:active{
-        transform: scale(0.99);
-    }
-
-
 }

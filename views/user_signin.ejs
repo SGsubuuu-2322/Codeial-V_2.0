@@ -1,24 +1,32 @@
 <link rel="stylesheet" href="/css/signin.css" />
-<h1>Sign-in Page</h1>
 
-<form action="/users/create-session" method="post" class="form">
-  <input
-    type="email"
-    name="email"
-    placeholder="Enter your email..."
-    required
-    autofocus
-  />
-  <input
-    type="password"
-    name="password"
-    placeholder="Enter your password..."
-    required
-    autofocus
-  />
-  <button type="submit">Sign In</button>
-</form>
+<div class="sign-in-container">
+  <h1>Sign-in Page</h1>
 
-<p>
-  <a href="/users/auth/google">Google SignIn/SignUp</a>
-</p>
+  <form action="/users/create-session" method="post" class="form">
+    <input
+      type="email"
+      name="email"
+      placeholder="Enter your email..."
+      required
+      autofocus
+    />
+    <input
+      type="password"
+      name="password"
+      placeholder="Enter your password..."
+      required
+      autofocus
+    />
+    <button type="submit">Sign In</button>
+  </form>
+
+  <div class="other-options">
+    <p>
+      <a href="/users/forgot-password">Forget Password ?</a>
+    </p>
+    <p>
+      <a href="/users/auth/google">Google SignIn/SignUp</a>
+    </p>
+  </div>
+</div>

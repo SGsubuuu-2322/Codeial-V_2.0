@@ -1,0 +1,21 @@
+.reset-password-container {
+  background-color: #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.6);
+  border-radius: 25px; }
+  .reset-password-container h1 {
+    margin: 0; }
+  .reset-password-container .form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    max-width: 360px;
+    margin-top: 20px;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.6); }

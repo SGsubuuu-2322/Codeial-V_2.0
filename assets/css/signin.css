@@ -1,28 +1,47 @@
-h1 {
-  margin: 0; }
-
-.form {
+.sign-in-container {
   display: flex;
   flex-direction: column;
-  width: 400px;
-  margin: 40px auto;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5); }
-  .form input {
-    padding: 8px;
-    font-size: 16px;
-    border: none;
-    border-bottom: 2px solid black;
-    margin: 5px 0; }
-  .form button {
-    font-size: 16px;
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    border: none;
-    cursor: pointer; }
-  .form button:focus, .form input:focus {
-    outline: none; }
-  .form button:active {
-    transform: scale(0.99); }
+  justify-content: center;
+  align-items: center; }
+  .sign-in-container h1 {
+    margin: 0; }
+  .sign-in-container .form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 40px auto;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5); }
+    .sign-in-container .form input {
+      padding: 8px;
+      font-size: 16px;
+      border: none;
+      border-bottom: 2px solid black;
+      margin: 5px 0; }
+    .sign-in-container .form button {
+      font-size: 16px;
+      background-color: #333;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      cursor: pointer; }
+    .sign-in-container .form button:focus, .sign-in-container .form input:focus {
+      outline: none; }
+    .sign-in-container .form button:active {
+      transform: scale(0.99); }
+  .sign-in-container .other-options {
+    background-color: #ddd;
+    padding: 0 10px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease-in; }
+    .sign-in-container .other-options p a {
+      text-decoration: none;
+      color: #333; }
+  .sign-in-container .other-options:hover {
+    background-color: #333; }
+    .sign-in-container .other-options:hover p a {
+      color: #fff; }
+  .sign-in-container a:hover {
+    border-bottom: 2px solid #fff; }
