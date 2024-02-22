@@ -123,53 +123,53 @@ module.exports.forgotPassword = function (req, res) {
     title: "Forgot Password?",
   });
 };
-// module.exports.verifyEmail = async function (req, res) {
-//   try {
-//     let user = await User.findOne({ email: req.body.email });
+module.exports.verifyEmail = async function (req, res) {
+  try {
+    let user = await User.findOne({ email: req.body.email });
 
-//     if (!user) {
-//       req.flash("error", "No account with this Email found!");
-//       return res.redirect("back");
-//     } else if (user) {
-//       let newResetPassToken = await ResetPasswordToken.create({
-//         user: user.id,
-//         accessToken: crypto.randomBytes(20).toString("hex"),
-//       });
+    if (!user) {
+      req.flash("error", "No account with this Email found!");
+      return res.redirect("back");
+    } else if (user) {
+      let newResetPassToken = await ResetPasswordToken.create({
+        user: user.id,
+        accessToken: crypto.randomBytes(20).toString("hex"),
+      });
 
-//       if (newResetPassToken) {
-//         newResetPassToken = await newResetPassToken.populate(
-//           "user",
-//           "name email"
-//         );
-//         // console.log("New Reset Password Token : ", newResetPassToken);
-//         let job = queue
-//           .create("sendResetPasswordEmail", newResetPassToken)
-//           .save((err) => {
-//             if (err) {
-//               console.log(
-//                 "Error in creating reset-pass-email job in queue...",
-//                 err
-//               );
-//               return;
-//             }
+      if (newResetPassToken) {
+        newResetPassToken = await newResetPassToken.populate(
+          "user",
+          "name email"
+        );
+        // console.log("New Reset Password Token : ", newResetPassToken);
+        let job = queue
+          .create("sendResetPasswordEmail", newResetPassToken)
+          .save((err) => {
+            if (err) {
+              console.log(
+                "Error in creating reset-pass-email job in queue...",
+                err
+              );
+              return;
+            }
 
-//             return;
-//           });
-//         req.flash(
-//           "success",
-//           "A reset password link has been sent to your email"
-//         );
-//         return res.redirect("/users/sign-in");
-//       } else {
-//         req.flash("error", "There's some technical issue! Try again...");
-//         return res.redirect("back");
-//       }
-//     }
-//   } catch (err) {
-//     console.log("Error in verifying email...", err);
-//     return;
-//   }
-// };
+            return;
+          });
+        req.flash(
+          "success",
+          "A reset password link has been sent to your email"
+        );
+        return res.redirect("/users/sign-in");
+      } else {
+        req.flash("error", "There's some technical issue! Try again...");
+        return res.redirect("back");
+      }
+    }
+  } catch (err) {
+    console.log("Error in verifying email...", err);
+    return;
+  }
+};
 
 // module.exports.resetPassword = async (req, res) => {
 //   try {
