@@ -171,27 +171,27 @@ module.exports.verifyEmail = async function (req, res) {
   }
 };
 
-// module.exports.resetPassword = async (req, res) => {
-//   try {
-//     const token = await ResetPasswordToken.findOne({
-//       accessToken: req.query.access_token,
-//     });
+module.exports.resetPassword = async (req, res) => {
+  try {
+    const token = await ResetPasswordToken.findOne({
+      accessToken: req.query.access_token,
+    });
 
-//     if (token.isValid) {
-//       req.flash("success", "Now, carefully reset your password...");
-//       return res.render("reset_password", {
-//         title: "Reset Password",
-//         userId: token.user._id,
-//       });
-//     } else {
-//       req.flash("error", "Sorry you're not authorized to do it now...");
-//       return res.redirect("/users/verify-email");
-//     }
-//   } catch (err) {
-//     console.log("Error in verifiying the access_token...", err);
-//     return;
-//   }
-// };
+    if (token.isValid) {
+      req.flash("success", "Now, carefully reset your password...");
+      return res.render("reset_password", {
+        title: "Reset Password",
+        userId: token.user._id,
+      });
+    } else {
+      req.flash("error", "Sorry you're not authorized to do it now...");
+      return res.redirect("/users/verify-email");
+    }
+  } catch (err) {
+    console.log("Error in verifiying the access_token...", err);
+    return;
+  }
+};
 
 // module.exports.updatePassword = async (req, res) => {
 //   try {
