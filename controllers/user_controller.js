@@ -118,11 +118,11 @@ module.exports.destroySession = function (req, res) {
   });
 };
 
-// module.exports.forgotPassword = function (req, res) {
-//   return res.render("forgot_password", {
-//     title: "Forgot Password?",
-//   });
-// };
+module.exports.forgotPassword = function (req, res) {
+  return res.render("forgot_password", {
+    title: "Forgot Password?",
+  });
+};
 // module.exports.verifyEmail = async function (req, res) {
 //   try {
 //     let user = await User.findOne({ email: req.body.email });
