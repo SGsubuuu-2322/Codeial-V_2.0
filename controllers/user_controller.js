@@ -193,47 +193,47 @@ module.exports.resetPassword = async (req, res) => {
   }
 };
 
-// module.exports.updatePassword = async (req, res) => {
-//   try {
-//     if (req.body.password1 !== req.body.password2) {
-//       req.flash(
-//         "error",
-//         "Your password and confirm password aren't matching.Try again!!!"
-//       );
-//       return res.redirect("back");
-//     }
+module.exports.updatePassword = async (req, res) => {
+  try {
+    if (req.body.password1 !== req.body.password2) {
+      req.flash(
+        "error",
+        "Your password and confirm password aren't matching.Try again!!!"
+      );
+      return res.redirect("back");
+    }
 
-//     // console.log("user in update password: ", req.params.id);
+    // console.log("user in update password: ", req.params.id);
 
-//     let userId = req.params.id;
+    let userId = req.params.id;
 
-//     let user = await User.findByIdAndUpdate(userId, {
-//       password: req.body.password1,
-//     });
+    let user = await User.findByIdAndUpdate(userId, {
+      password: req.body.password1,
+    });
 
-//     let token = await ResetPasswordToken.findOne({ user: user.id });
+    let token = await ResetPasswordToken.findOne({ user: user.id });
 
-//     await ResetPasswordToken.findByIdAndUpdate(token.id, {
-//       isValid: false,
-//     });
+    await ResetPasswordToken.findByIdAndUpdate(token.id, {
+      isValid: false,
+    });
 
-//     token = await token.populate("user", "name email password");
+    token = await token.populate("user", "name email password");
 
-//     let job = queue.create("successfullPassResetEmail", token).save((err) => {
-//       if (err) {
-//         console.log(
-//           "Error in creating job for sending successfull password reset email...",
-//           err
-//         );
-//         return;
-//       }
-//       return;
-//     });
+    let job = queue.create("successfullPassResetEmail", token).save((err) => {
+      if (err) {
+        console.log(
+          "Error in creating job for sending successfull password reset email...",
+          err
+        );
+        return;
+      }
+      return;
+    });
 
-//     req.flash("success", "Your password has been reset successfully!!!!");
-//     return res.redirect("/users/sign-in");
-//   } catch (err) {
-//     console.log("Error in updating your password...", err);
-//     return;
-//   }
-// };
+    req.flash("success", "Your password has been reset successfully!!!!");
+    return res.redirect("/users/sign-in");
+  } catch (err) {
+    console.log("Error in updating your password...", err);
+    return;
+  }
+};
