@@ -35,7 +35,7 @@ router.get(
   userController.createSession
 );
 
-// router.get("/forgot-password", userController.forgotPassword);
+router.get("/forgot-password", userController.forgotPassword);
 // router.post("/verify-email", userController.verifyEmail);
 // router.get("/reset-password", userController.resetPassword);
 // router.post("/update-password/:id", userController.updatePassword);
