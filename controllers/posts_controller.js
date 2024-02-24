@@ -36,7 +36,7 @@ module.exports.destroy = async (req, res) => {
       return res.redirect("back");
     } else if (post) {
       if (post.user == req.user.id) {
-        console.log("Post comments array: ", post.comments);
+        // console.log("Post comments array: ", post.comments);
         await Like.deleteMany({ likeable: post, onModel: "Post" });
         await Like.deleteMany({ likeable: { $in: post.comments } });
 

@@ -1,6 +1,6 @@
 const Comment = require("../models/comment");
 const Post = require("../models/post");
-// const Like = require("../models/like");
+const Like = require("../models/like");
 const commentsMailer = require("../mailers/comments_mailer");
 const queue = require("../configs/kue");
 const commentEmailWorker = require("../workers/comment_email_worker");
@@ -65,7 +65,7 @@ module.exports.destroy = async (req, res) => {
           $pull: { comments: req.params.id },
         });
 
-        // await Like.deleteMany({ likeable: comment, onModel: "Comment" });
+        await Like.deleteMany({ likeable: comment, onModel: "Comment" });
 
         if (req.xhr) {
           return res.status(200).json({
