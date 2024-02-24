@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 
 const friendshipSchema = new mongoose.Schema(
   {
-    fromUser: {
+    from_user: {
       types: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
-    toUser: {
+    to_user: {
       types: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
@@ -16,5 +16,5 @@ const friendshipSchema = new mongoose.Schema(
   }
 );
 
-const FriendShip = mongoose.model("FriendShip", friendshipSchema);
+const Friendship = mongoose.model("Friendship", friendshipSchema);
 module.exports = friendshipSchema;
