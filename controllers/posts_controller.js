@@ -30,7 +30,7 @@ module.exports.create = async (req, res) => {
 module.exports.destroy = async (req, res) => {
   try {
     let post = await Post.findById(req.params.id);
-    post = await post.populate("comments");
+    // post = await post.populate("comments");
 
     if (!post) {
       return res.redirect("back");
