@@ -44,6 +44,13 @@ module.exports.home = async (req, res) => {
       posts: posts,
       all_users: users,
     });
+
+    // return res.status(200).json({
+    //   data: {
+    //     posts: posts,
+    //   },
+    //   message: "Its successfull",
+    // });
   } catch (err) {
     console.log("Error: ", err);
     return;
