@@ -20,7 +20,7 @@ class ToggleLike {
           } else {
             likesCount++;
           }
-          console.log("Likes Count is: ", likesCount);
+        //   console.log("Likes Count is: ", likesCount);
 
           $(self).attr("data-likes", likesCount);
           $(self).html(`${likesCount}Likes`);
