@@ -28,6 +28,7 @@ class PostComments {
           $(`#post-comments-${postId}`).prepend(newComment);
           $("#comment-text-area").val("");
           pSelf.deleteComment($(" .delete-comment-button", newComment));
+          new ToggleLike($(" .toggle-like-button", newComment));
           pSelf.showFlashNotification(data.message, "success");
         },
         error: function (error) {
@@ -47,6 +48,8 @@ class PostComments {
         ${comment.content}
         <br />
         <small>${comment.user.name}</small>
+
+     
     </li>
     
       `
@@ -81,3 +84,10 @@ class PostComments {
     }).show();
   }
 }
+
+
+{/* <small>              
+<a class="toggle-like-button" data-likes="0" href="/likes/toggle/?id=${comment._id}&type=Comment">
+    0 Likes
+</a>           
+</small> */}
