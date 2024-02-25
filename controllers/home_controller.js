@@ -40,13 +40,13 @@ module.exports.home = async (req, res) => {
     let users = await User.find({});
 
     // console.log("req.user.id: ", req.user.id);
-    // let user;
-    // let friends = [];
+    let user;
+    let friends = [];
 
-    // if (req.user) {
-    //   user = await User.findById(req.user.id).populate("friendships");
-    //   friends = user.friendships;
-    // }
+    if (req.user) {
+      user = await User.findById(req.user.id).populate("friendships");
+      friends = user.friendships;
+    }
 
     // console.log("User: ", user);
     // console.log("User Friends: ", user.friendships);
@@ -55,7 +55,7 @@ module.exports.home = async (req, res) => {
       title: "Home",
       posts: posts,
       all_users: users,
-      // all_friends: friends,
+      all_friends: friends,
     });
 
     //   return res.status(200).json({
