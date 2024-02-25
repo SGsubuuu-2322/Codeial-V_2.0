@@ -40,6 +40,12 @@
 
     <button type="submit">Update Profile</button>
   </form>
+  <%}else{%>
+
+  <button type="submit" class="add-friend">
+    <a href="/friend/addition/<%= user_profile._id %>">Add Friend</a>
+  </button>
+
   <%}%>
 </div>
 
