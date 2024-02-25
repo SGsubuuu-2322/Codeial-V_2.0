@@ -26,15 +26,17 @@
   <section class="user-friends">
     <div class="friends box">
       <h3>Friends</h3>
+      <!-- <% if(locals.user){ %>
       <ul>
-        <% for(u of all_users){ %>
+        <% for(f of all_friends){ %>
         <li>
           <p>
-            <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+            <a href="/users/profile/<%= f.id %>"><%= f.name %></a>
           </p>
         </li>
         <%}%>
       </ul>
+      <%}%> -->
     </div>
     <div class="all-users box">
       <h3>Users</h3>
