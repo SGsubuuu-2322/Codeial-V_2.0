@@ -1,9 +1,51 @@
 .home-container {
   display: flex; }
   .home-container .feed-posts {
-    width: 70%;
+    width: 65%;
     padding: 10px; }
   .home-container .user-friends {
-    width: 30%;
-    padding: 10px;
-    border-left: 2px solid #333; }
+    height: 100vh;
+    width: 35%;
+    padding: 25px;
+    border-left: 2px solid #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+    .home-container .user-friends .box h3 {
+      font-size: 25px;
+      border-bottom: 2px solid #333; }
+    .home-container .user-friends .box ul {
+      list-style-type: none;
+      padding: 0; }
+      .home-container .user-friends .box ul li a {
+        font-size: 18px;
+        text-decoration: none;
+        color: deepskyblue;
+        transition: all 0.1s ease; }
+      .home-container .user-friends .box ul li a:hover {
+        border-bottom: 3px solid deepskyblue; }
+    .home-container .user-friends .friends {
+      text-align: center;
+      width: 100%;
+      height: 50%;
+      overflow-y: auto;
+      padding: 10px;
+      margin-bottom: 20px;
+      z-index: 0;
+      background-color: #fff;
+      box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease-in; }
+    .home-container .user-friends .all-users {
+      text-align: center;
+      width: 100%;
+      height: 50%;
+      overflow-y: auto;
+      padding: 10px;
+      margin-bottom: 5px;
+      z-index: 0;
+      background-color: #fff;
+      box-shadow: 0 5px 10px 5px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease-in; }
+  .home-container .user-friends > div:hover {
+    transform: scale(1.1);
+    z-index: 10; }

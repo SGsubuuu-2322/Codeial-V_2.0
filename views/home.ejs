@@ -24,16 +24,30 @@
   </section>
 
   <section class="user-friends">
-    <h3>Friends</h3>
-    <ul>
-      <% for(u of all_users){ %>
-      <li>
-        <p>
-          <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
-        </p>
-      </li>
-      <%}%>
-    </ul>
+    <div class="friends box">
+      <h3>Friends</h3>
+      <ul>
+        <% for(u of all_users){ %>
+        <li>
+          <p>
+            <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+          </p>
+        </li>
+        <%}%>
+      </ul>
+    </div>
+    <div class="all-users box">
+      <h3>Users</h3>
+      <ul>
+        <% for(u of all_users){ %>
+        <li>
+          <p>
+            <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+          </p>
+        </li>
+        <%}%>
+      </ul>
+    </div>
   </section>
 </div>
 <script src="/js/home_posts_comments.js"></script>
