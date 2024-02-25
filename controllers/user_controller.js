@@ -10,15 +10,15 @@ const successPassResetEmailWorker = require("../workers/success_pass_reset_email
 module.exports.profile = async (req, res) => {
   try {
     let user = await User.findById(req.params.id);
-    // let dec = false;
-    // dec = user.friendships.some((friendId) => friendId.equals(req.user.id));
+    let dec = false;
+    dec = user.friendships.some((friendId) => friendId.equals(req.user.id));
 
     // console.log("******Decision*****: ", dec);
 
     return res.render("user_profile", {
       title: "Profile",
       user_profile: user,
-      // friendship_value: dec,
+      friendship_value: dec,
     });
   } catch (err) {
     console.log("Error: ", err);
