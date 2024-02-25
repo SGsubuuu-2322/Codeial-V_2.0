@@ -9,15 +9,28 @@ h1 {
   padding-top: 20px;
   border-radius: 20px;
   background-color: #ddd; }
-  .profile-container .add-friend {
+  .profile-container .friend-box {
+    padding: 15px; }
+    .profile-container .friend-box span {
+      border: 1px solid deepskyblue;
+      border-radius: 6px;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      font-size: 20px;
+      font-weight: 600;
+      color: deepskyblue;
+      background-color: #fff; }
+  .profile-container .toggle-friendship {
     padding: 10px;
     border: none;
     border-radius: 10px;
     box-shadow: 0 5px 2px rgba(0, 0, 0, 0.5);
     transition: all 0.1s ease-in; }
-    .profile-container .add-friend a {
+    .profile-container .toggle-friendship a {
+      font-family: Times, 'Times New Roman', serif;
+      font-weight: bolder;
       text-decoration: none;
       color: deepskyblue;
       font-size: 16px; }
-  .profile-container .add-friend:active, .profile-container .add-friend:hover {
+  .profile-container .toggle-friendship:active, .profile-container .toggle-friendship:hover {
     transform: scale(0.98); }

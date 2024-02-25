@@ -9,6 +9,12 @@
     height="100"
   />
 
+  <div class="friend-box">
+    <% if(friendship_value){ %>
+    <span>Friend</span>
+    <%}%>
+  </div>
+
   <h2 id="user-name">Heyy!!! <%= user_profile.name %></h2>
   <p id="user-email">Your email is : <%= user_profile.email %></p>
 
@@ -42,11 +48,14 @@
   </form>
   <%}else{%>
 
-  <button type="submit" class="add-friend">
-    <a href="/friend/toggle-friendship/<%= user_profile._id %>">Add Friend</a>
+  <button type="submit" class="toggle-friendship">
+    <a id="link" href="/friend/toggle-friendship/<%= user_profile._id %>"
+      >Toggle Friendship</a
+    >
   </button>
 
   <%}%>
 </div>
 
+<!-- <script src="/js/friend_profile.js"></script> -->
 <!-- <script src="/js/user_profile.js"></script> -->

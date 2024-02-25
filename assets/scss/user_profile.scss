@@ -11,7 +11,22 @@ h1{
   border-radius: 20px;
   background-color: #ddd;
 
-  .add-friend{
+
+  .friend-box{
+    padding: 15px;
+    span{
+      border: 1px solid deepskyblue;
+      border-radius: 6px;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      font-size: 20px;
+      font-weight: 600;
+      color: deepskyblue;
+      background-color: #fff;
+    }
+  }
+
+  .toggle-friendship{
     padding: 10px;
     border: none;
     border-radius: 10px;
@@ -19,13 +34,15 @@ h1{
     transition: all 0.1s ease-in;
 
     a{
+      font-family: Times, 'Times New Roman', serif;
+      font-weight: bolder;
       text-decoration: none;
       color: deepskyblue;
       font-size: 16px;
     }
   }
 
-  .add-friend:active, .add-friend:hover{
+  .toggle-friendship:active, .toggle-friendship:hover{
     transform: scale(0.98);
   }
 }
