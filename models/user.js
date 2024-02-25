@@ -25,10 +25,10 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
 
-    friendship: {
+    friendships: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Friendship"
-    }
+      ref: "Friendship",
+    },
   },
   { timestamps: true }
 );
