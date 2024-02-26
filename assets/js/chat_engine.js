@@ -11,8 +11,14 @@ class chatEngine {
   }
 
   connectionHandler() {
+    let self = this;
     this.socket.on("connect", function () {
       console.log("Socket Connection using sockets has been  established!");
+
+      this.socket.emit("join_room", {
+        user_email: this.userEmail,
+        chat_room: "Codeial",
+      });
     });
   }
 }
