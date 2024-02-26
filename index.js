@@ -1,9 +1,10 @@
 const express = require("express");
+const env = require("./configs/environment");
 const cookieParser = require("cookie-parser");
 const app = express();
 const port = 8000;
 const expressLayouts = require("express-ejs-layouts");
-// const path = require("path");
+const path = require("path");
 const db = require("./configs/mongoose");
 
 const session = require("express-session");
@@ -23,8 +24,8 @@ console.log("Chating Server is listening on port: 5000");
 
 app.use(
   sassMiddleware({
-    src: "./assets/scss",
-    dest: "./assets/css",
+    src: path.join(__dirname, env.assets_path, "/scss"),
+    dest: path.join(__dirname, env.assets_path, "/css"),
     debug: true,
     outputStyle: "extended",
     prefix: "/css",
@@ -34,7 +35,7 @@ app.use(
 app.use(express.urlencoded());
 app.use(cookieParser());
 
-app.use(express.static("./assets"));
+app.use(express.static(env.assets_path));
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
 app.use(expressLayouts);
@@ -49,7 +50,7 @@ app.use(
   session({
     name: "Codeial-V_2.0",
     // TODO : Change the secret key before deployment on the production server...
-    secret: "blahsomething",
+    secret: env.session_cookie_key,
     saveUninitialized: false,
     resave: false,
     cookie: {

@@ -1,4 +1,5 @@
 const passport = require("passport");
+const env = require("./environment");
 const googleStrategy = require("passport-google-oauth").OAuth2Strategy;
 
 const crypto = require("crypto");
@@ -7,16 +8,15 @@ const User = require("../models/user");
 passport.use(
   new googleStrategy(
     {
-      clientID:
-        "498113812873-o7r7rsf0va92h3pbt5grhgtdlq605btm.apps.googleusercontent.com",
-      clientSecret: "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",
-      callbackURL: "http://localhost:8000/users/auth/google/callback",
+      clientID: env.google_client_id,
+      clientSecret: env.google_client_secret,
+      callbackURL: env.google_callback_url,
     },
     async function (accessToken, refreshToken, profile, done) {
       try {
         let oldUser = await User.findOne({ email: profile.emails[0].value });
-        console.log("Tokens are: ", accessToken, refreshToken);
-        console.log(profile);
+        // console.log("Tokens are: ", accessToken, refreshToken);
+        // console.log(profile);
         if (oldUser) {
           return done(null, oldUser);
         } else {
