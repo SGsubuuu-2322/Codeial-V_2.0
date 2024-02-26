@@ -24,5 +24,18 @@ class chatEngine {
         console.log("User Joined: ", data);
       });
     });
+
+    // CHANGE :: send a message on clicking the send message button
+    $("#send-message").click(function () {
+      let msg = $("#chat-message-input").val();
+
+      if (msg != "") {
+        self.socket.emit("send_message", {
+          message: msg,
+          user_email: self.userEmail,
+          chatroom: "codeial",
+        });
+      }
+    });
   }
 }
