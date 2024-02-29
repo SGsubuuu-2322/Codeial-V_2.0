@@ -53,20 +53,26 @@ app.use(
   })
 );
 
+// Setting up urlencoded() and cookie parser  middlewares for parsing request bodies and cookies from incoming requests
 app.use(express.urlencoded());
 app.use(cookieParser());
 
+// Setting up the static  file serving from public directory...
 app.use(express.static(env.assets_path));
 app.use("/uploads", express.static(__dirname + "/uploads"));
 
+
+// Setting up express-layouts and its scripts and stylings..
 app.use(expressLayouts);
 app.set("layout extractStyles", true);
 app.set("layout extractScripts", true);
 
+// Adding  the view engine with ejs templates and passing in any necessary locals (e.g., global
 app.set("view engine", "ejs");
-// app.set("views", path.join(__dirname, "views"));
 app.set("views", "./views");
 
+
+// Setting up or configuring express-session for session  handling...
 app.use(
   session({
     name: "Codeial-V_2.0",
@@ -89,16 +95,22 @@ app.use(
   })
 );
 
+// Initializing the  passport middleware to handle authentication requests and sessions...
 app.use(passport.initialize());
 app.use(passport.session());
 
+// using custom middleware for setting authenticated user from req body to res locals...
 app.use(passport.setAuthenticatedUser);
 
+// Setting up custom middleware and initializing flash messages for sending flash notifications from server...
 app.use(flash());
 app.use(customMware.setFlash);
 
+// Settign routes folder for handling routes...
 app.use("/", require("./routes"));
 
+
+// Making our server to listen  on port specified in .env file...
 app.listen(port, (err) => {
   if (err) {
     console.log(`There's some error in starting your server: ${err}`);
