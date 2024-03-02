@@ -1,8 +1,11 @@
+// Importing passport and passport-local for local authentication...
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 
+// Importing user model for database operations on user collection.
 const User = require("../models/user");
 
+// Configuring  passport to use the local strategy for handling login
 passport.use(
   new LocalStrategy(
     {
@@ -28,6 +31,7 @@ passport.use(
   )
 );
 
+// Configuring  serializeUser & deserializeUser methods of Passport for encrypting and decrypting the user details from sessions and  cookies
 passport.serializeUser((user, done) => {
   // console.log("SerializeUser function called...");
   done(null, user.id);
@@ -48,6 +52,7 @@ passport.deserializeUser((id, done) => {
     });
 });
 
+// Creating a function on passport for checking the authenticity of a user...
 passport.checkAuthentication = function (req, res, next) {
   // console.log("In checkAuthentication function of passport.js file...");
   if (req.isAuthenticated()) {
@@ -57,6 +62,8 @@ passport.checkAuthentication = function (req, res, next) {
   return res.redirect("/users/sign-in");
 };
 
+
+// And creating another function , if a user is authenticated then its details should be sent to response loclas for authenticaion on front-end side...
 passport.setAuthenticatedUser = function (req, res, next) {
   // console.log(
   //   "In setAuthenticatedUser middleware of passport-local strategy..."
