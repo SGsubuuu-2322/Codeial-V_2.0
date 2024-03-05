@@ -1,9 +1,20 @@
+// Importing required models for processing request and response
 const User = require("../models/user");
 const ResetPasswordToken = require("../models/reset_pass_token");
+
+// Importing the fs  module to read files in Node.js
 const fs = require("fs");
+
+// Importing the path module , which provides utilities for working with file and
 const path = require("path");
+
+// Importing crypto  module, which provide cryptographic functionality like generating  random bytes or creating hashes .
 const crypto = require("crypto");
+
+// Importing kue  library for handling jobs queue
 const queue = require("../configs/kue");
+
+// Importing email worker for  sending emails using nodemailer
 const resetPassEmailWorker = require("../workers/reset_pass_email_worker");
 const successPassResetEmailWorker = require("../workers/success_pass_reset_email_worker");
 
