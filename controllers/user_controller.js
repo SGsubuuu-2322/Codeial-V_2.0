@@ -18,6 +18,8 @@ const queue = require("../configs/kue");
 const resetPassEmailWorker = require("../workers/reset_pass_email_worker");
 const successPassResetEmailWorker = require("../workers/success_pass_reset_email_worker");
 
+
+// controller to render profile page with user and its relevant information
 module.exports.profile = async (req, res) => {
   try {
     let user = await User.findById(req.params.id);
@@ -37,6 +39,7 @@ module.exports.profile = async (req, res) => {
   }
 };
 
+// Controller action that will update the user profile with its information
 module.exports.updateProfile = async (req, res) => {
   try {
     if (req.user.id == req.params.id) {
@@ -74,6 +77,7 @@ module.exports.updateProfile = async (req, res) => {
   }
 };
 
+// Controller action to render user sign-in page
 module.exports.userSignIn = (req, res) => {
   if (req.isAuthenticated()) {
     return res.redirect("/users/profile");
@@ -82,6 +86,8 @@ module.exports.userSignIn = (req, res) => {
     title: "Codeial | Sign-in",
   });
 };
+
+// Controller action to render user sign-up page
 module.exports.userSignUp = function (req, res) {
   if (req.isAuthenticated()) {
     return res.redirect("/users/profile");
@@ -91,6 +97,8 @@ module.exports.userSignUp = function (req, res) {
   });
 };
 
+
+// Controller action to create a new user account...
 module.exports.create = async (req, res) => {
   try {
     if (req.body.password != req.body.confirm_password) {
@@ -117,12 +125,14 @@ module.exports.create = async (req, res) => {
   }
 };
 
+// Controller action to create session for authenticated users...
 module.exports.createSession = function (req, res) {
   // console.log("From create-session handler or action: ", req.user);
   req.flash("success", "Logged In Successfully...");
   return res.redirect("/");
 };
 
+// Controller action to delete session for authenticated users...
 module.exports.destroySession = function (req, res) {
   req.logout((err) => {
     if (err) {
@@ -135,11 +145,14 @@ module.exports.destroySession = function (req, res) {
   });
 };
 
+// Controller action render forgot password page....
 module.exports.forgotPassword = function (req, res) {
   return res.render("forgot_password", {
     title: "Forgot Password?",
   });
 };
+
+// Controller action to verify email for authenticated user to be  able to reset his/her password...
 module.exports.verifyEmail = async function (req, res) {
   try {
     let user = await User.findOne({ email: req.body.email });
@@ -188,6 +201,7 @@ module.exports.verifyEmail = async function (req, res) {
   }
 };
 
+//  Handle Reset Password Form Submission
 module.exports.resetPassword = async (req, res) => {
   try {
     const token = await ResetPasswordToken.findOne({
@@ -210,6 +224,7 @@ module.exports.resetPassword = async (req, res) => {
   }
 };
 
+// Controller action to update password in DB...
 module.exports.updatePassword = async (req, res) => {
   try {
     if (req.body.password1 !== req.body.password2) {
@@ -247,6 +262,7 @@ module.exports.updatePassword = async (req, res) => {
       return;
     });
 
+    // Redirecting to users-sgin-in page  after successful password change..
     req.flash("success", "Your password has been reset successfully!!!!");
     return res.redirect("/users/sign-in");
   } catch (err) {
